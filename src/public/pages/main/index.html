@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Осипов Сергей (sqlzzy)" />
+    <meta
+      name="description"
+      content="Мультиплеерная игра (Самый быстрый расшифровщик). Кто быстрее всех разгадает зашифрованный код на основе исходного. Игра для 2-х и более человек"
+    />
+    <title>Игра "Самый быстрый расшифровщик"</title>
+    <link rel="icon" href="/common/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/common/style/main-style.css" />
+    <link rel="stylesheet" href="/pages/main/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Самый быстрый расшифровщик</h1>
+    </header>
+    <main class="wrapper">
+      <section class="content">
+        <div class="name-player">
+          <label for="name-player-input">Имя:</label>
+          <input
+            type="text"
+            class="input input_type_name-player"
+            id="name-player-input"
+            size="10"
+            maxlength="10"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="link-room">
+          <label for="link-room-input"
+            >Отправь ссылку на комнату другим участникам:</label
+          >
+          <input
+            class="input input_type_link-room"
+            type="text"
+            id="link-room-input"
+            disabled
+          />
+          <button class="button button_type_copy-link" id="copy-link-btn">
+            Скопировать
+          </button>
+        </div>
+        <button class="button button_type_goto-room" id="goto-room-btn">
+          Войти
+        </button>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">
+        Игру написал: <a href="https://osipov.tech/">Осипов&nbsp;Сергей</a>
+      </p>
+    </footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/pages/main/index.js"></script>
+  </body>
+</html>

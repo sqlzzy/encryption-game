@@ -1,0 +1,17 @@
+{
+  "name": "encryption-game",
+  "version": "1.0.0",
+  "description": "Мультиплеерная игра (Самый быстрый расшифровщик). Кто быстрее всех разгадает зашифрованный код на основе исходного. Игра для 2-х и более человек",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "Sergey Osipov (sqlzzy)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.2",
+    "uuid": "^9.0.0"
+  }
+}

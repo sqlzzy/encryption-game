@@ -2,7 +2,7 @@ export default async function initTask(rooms, io, data) {
   const { selectedLevel, currentLocation, idRoom } = data;
   const room = rooms.get(idRoom);
 
-  if (room) {
+  if (!!room) {
     const response = await fetch(`${currentLocation}/common/json/tasks.json`);
     const levels = await response.json();
     room.round.level = selectedLevel;

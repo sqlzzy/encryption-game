@@ -2,7 +2,7 @@ export default async function checkAnswer(socket, rooms, data) {
   const { answer, time, textOfHintTask, currentLocation, idRoom } = data;
   const room = rooms.get(idRoom);
 
-  if (room) {
+  if (!!room) {
     const response = await fetch(`${currentLocation}/common/json/tasks.json`);
     const levels = await response.json();
     const selectedLevel = room?.round?.level;

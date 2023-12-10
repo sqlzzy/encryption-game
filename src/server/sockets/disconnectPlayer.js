@@ -56,6 +56,7 @@ function disconnectPlayer(socket, rooms, io) {
         room.roomPlayers = room.round.roundPlayers = roundPlayers = roomPlayers;
 
         startGame = room.round.startGame = 0;
+
         io.to(idRoom).emit("getRoomPlayersData", {
           roomPlayers,
           startGame,
@@ -124,6 +125,7 @@ function disconnectPlayer(socket, rooms, io) {
       }
 
       socket.leave(idRoom);
+
       room.roomPlayers = roomPlayers;
       room.round.roundPlayers = !startGame ? roomPlayers : roundPlayers;
 

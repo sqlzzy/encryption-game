@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.emit("createIdRoom");
 
   socket.on("getIdCreatedRoom", (idRoom) => {
-    linkRoomInput.value = `${currentLocation}/lobby/?room=${idRoom}`;
+    const pathRoom = `${currentLocation}/lobby/?room=${idRoom}`;
+    linkRoomInput.value = pathRoom;
     linkRoomInput.dataset.idRoom = idRoom;
+    socket.emit("createQrCode", pathRoom, idRoom);
   });
 
   copyLinkBtn.addEventListener("click", () => {

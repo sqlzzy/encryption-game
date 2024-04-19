@@ -3,6 +3,8 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import QRCode from "qrcode";
+import fs from "fs";
 import createIdRoom from "./server/sockets/createIdRoom.js";
 import joinToRoom from "./server/sockets/joinToRoom.js";
 import checkPlayersList from "./server/sockets/checkPlayersList.js";
@@ -14,6 +16,7 @@ import initStartGame from "./server/sockets/initStartGame.js";
 import initTask from "./server/sockets/initTask.js";
 import checkAnswer from "./server/sockets/checkAnswer.js";
 import initWinnerOfRound from "./server/sockets/initWinnerOfRound.js";
+import createQrCode from "./server/sockets/createQrCode.js";
 import {
   MAIN_PAGE_URL,
   PATH_TO_MAIN_PAGE,
@@ -33,6 +36,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const rooms = new Map();
+
+const qrCode = QRCode;
 
 app.use(express.static(__dirname));
 app.use(express.static(`${__dirname}/public`));
@@ -58,6 +63,10 @@ app.use((req, res) => {
 io.on("connection", (socket) => {
   socket.on("createIdRoom", () => createIdRoom(socket));
 
+  socket.on("createQrCode", (url, idRoom) =>
+    createQrCode(qrCode, url, idRoom, __dirname)
+  );
+
   socket.on("joinToRoom", (data) => joinToRoom(socket, rooms, io, data));
 
   socket.on("checkPlayersList", (idRoom) =>
@@ -82,9 +91,11 @@ io.on("connection", (socket) => {
 
   socket.on("endRound", (roomId) => endRound(rooms, io, roomId));
 
-  socket.on("disconnect", () => disconnectPlayer(socket, rooms, io));
+  socket.on("disconnect", () =>
+    disconnectPlayer(socket, rooms, io, fs, __dirname)
+  );
 });
 
 httpServer.listen(SERVER_PORT, () => {
-  console.log(`listening on *:${SERVER_PORT}`);
+  console.log(`Порт сервера:${SERVER_PORT}`);
 });

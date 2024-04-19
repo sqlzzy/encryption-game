@@ -18,7 +18,17 @@ function isHostCurrentPlayer(currentPlayer) {
   return currentPlayer?.host === 1;
 }
 
-function disconnectPlayer(socket, rooms, io) {
+function deleteQrCode(fs, idRoom, dirnameSrc) {
+  const pathToQrCode = `${dirnameSrc}/common/images/qrCodes/${idRoom}.png`;
+
+  if (fs.existsSync(pathToQrCode)) {
+    fs.unlinkSync(pathToQrCode);
+  } else {
+    console.log("Файл изображения qr-кода не найден!");
+  }
+}
+
+function disconnectPlayer(socket, rooms, io, fs, dirnameSrc) {
   for (const [idRoom, room] of rooms) {
     if (!!room) {
       let roomPlayers = room?.roomPlayers;
@@ -72,6 +82,7 @@ function disconnectPlayer(socket, rooms, io) {
         updatedRoomPlayers = updatePlayersData(roomPlayers, socketId);
 
         if (updatedRoomPlayers.length === 0) {
+          deleteQrCode(fs, idRoom, dirnameSrc);
           rooms.delete(idRoom);
         }
 

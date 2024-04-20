@@ -10,7 +10,7 @@ export default function addMetatags(data) {
 
   createMetatag("og:title", title);
   createMetatag("og:description", descr);
-  createMetatag("og:image", `${url}/common/images/favicon.ico`);
+  createMetatag("og:image", `${url}/common/images/preview-og.png`);
   createMetatag("og:type", "website");
   createMetatag("og:url", url);
 }

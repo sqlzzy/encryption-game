@@ -156,6 +156,7 @@ li {
 
 .tabs-wrapper__title {
     margin: 0 0 6px;
+    max-width: 350px;
 }
 
 .tabs {

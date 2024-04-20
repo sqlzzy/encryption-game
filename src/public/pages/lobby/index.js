@@ -2,14 +2,14 @@ import copyToClipboard from "/common/js/copyToClipboard.js";
 import showPlayerList from "/common/js/showPlayerList.js";
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
 import removeElementAfterTimeout from "/common/js/removeElementAfterTimeout.js";
+import testValidName from "/common/js/testValidName.js";
+import initTabs from "/common/js/initTabs.js";
+import changeTextElement from "/common/js/changeTextElement.js";
+import addQrCodeToElement from "/common/js/addQrCodeToElement.js";
 import {
   ERROR_NAME_NOT_ENTERED,
   MESSAGE_COPIED,
 } from "/common/js/constants.js";
-import testValidName from "../../../common/js/testValidName.js";
-import initTabs from "../../../common/js/initTabs.js";
-import changeTextElement from "../../../common/js/changeTextElement.js";
-import addQrCodeToElement from "../../../common/js/addQrCodeToElement.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();

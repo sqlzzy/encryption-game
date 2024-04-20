@@ -4,6 +4,9 @@ import showElement from "/common/js/showElement.js";
 import hideElement from "/common/js/hideElement.js";
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
 import defineLevel from "/common/js/defineLevel.js";
+import initTabs from "/common/js/initTabs.js";
+import changeTextElement from "/common/js/changeTextElement.js";
+import addQrCodeToElement from "/common/js/addQrCodeToElement.js";
 import {
   MESSAGE_COPIED,
   MESSAGE_WAIT_HOST_TO_START_GAME,
@@ -12,9 +15,6 @@ import {
   MESSAGE_WAIT_HOST_TO_SELECT_LEVEL,
   ERROR_INCORRECT_ANSWER,
 } from "/common/js/constants.js";
-import initTabs from "../../../common/js/initTabs.js";
-import changeTextElement from "../../../common/js/changeTextElement.js";
-import addQrCodeToElement from "../../../common/js/addQrCodeToElement.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
@@ -63,10 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.emit("createQrCode", urlRoom, idRoom);
 
+  setTimeout(() => {
+    addQrCodeToElement(qrCodeTabContent, idRoom);
+  }, 1000);
+
   socket.on("getPlayerName", (namePlayer) => {
     document.title = `Игрок ${namePlayer}`;
     subtitlePage.textContent = `Игрок ${namePlayer}`;
-    addQrCodeToElement(qrCodeTabContent, idRoom);
   });
 
   function filterPlayersHostList(players) {

@@ -1,7 +1,7 @@
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
 import removeElementAfterTimeout from "/common/js/removeElementAfterTimeout.js";
 import { ERROR_NAME_NOT_ENTERED } from "/common/js/constants.js";
-import testValidName from "../../../common/js/testValidName.js";
+import testValidName from "/common/js/testValidName.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();

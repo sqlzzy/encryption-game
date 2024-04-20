@@ -26,6 +26,7 @@ export const MESSAGE_WAIT_HOST_TO_SELECT_LEVEL =
   "Ведущий выбирает уровень задачи";
 export const ERROR_INCORRECT_ANSWER = "Ответ неверный! Попробуйте еще";
 export const TEXT_HOST = "Ведущий";
+export const ALT_QRCODE_IMAGE = "Qr-код ссылки на комнату";
 
 export const CLASS_SHOW_ELEMENT = "show";
 export const CLASS_HIDE_ELEMENT = "hide";

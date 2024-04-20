@@ -6,6 +6,7 @@ import testValidName from "/common/js/testValidName.js";
 import initTabs from "/common/js/initTabs.js";
 import changeTextElement from "/common/js/changeTextElement.js";
 import addQrCodeToElement from "/common/js/addQrCodeToElement.js";
+import addMetatags from "/common/js/addMetatags.js";
 import {
   ERROR_NAME_NOT_ENTERED,
   MESSAGE_COPIED,
@@ -27,6 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
   linkRoomInput.value = urlRoom;
 
   initTabs();
+
+  addMetatags({
+    title: `Мультиплеерная игра | Лобби комнаты ${idRoom}`,
+    descr: "Мультиплеерная игра (Самый быстрый расшифровщик)",
+    url: currentLocation,
+  });
 
   socket.emit("createQrCode", urlRoom, idRoom);
 

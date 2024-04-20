@@ -1,13 +1,20 @@
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
 import removeElementAfterTimeout from "/common/js/removeElementAfterTimeout.js";
-import { ERROR_NAME_NOT_ENTERED } from "/common/js/constants.js";
 import testValidName from "/common/js/testValidName.js";
+import addMetatags from "../../../common/js/addMetatags.js";
+import { ERROR_NAME_NOT_ENTERED } from "/common/js/constants.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
   const namePlayerInput = document.querySelector("#name-player-input");
   const gotoRoomBtn = document.querySelector("#goto-room-btn");
   const currentLocation = location.origin;
+
+  addMetatags({
+    title: "Мультиплеерная игра | Главная",
+    descr: "Мультиплеерная игра (Самый быстрый расшифровщик)",
+    url: currentLocation,
+  });
 
   socket.emit("createIdRoom");
 

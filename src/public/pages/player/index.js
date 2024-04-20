@@ -2,9 +2,7 @@ import copyToClipboard from "/common/js/copyToClipboard.js";
 import showPlayerList from "/common/js/showPlayerList.js";
 import showElement from "/common/js/showElement.js";
 import hideElement from "/common/js/hideElement.js";
-import showMessageAfterElement from "/common/js/showMessageAfterElement.js";
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
-import removeElementAfterTimeout from "/common/js/removeElementAfterTimeout.js";
 import defineLevel from "/common/js/defineLevel.js";
 import {
   MESSAGE_COPIED,
@@ -14,6 +12,9 @@ import {
   MESSAGE_WAIT_HOST_TO_SELECT_LEVEL,
   ERROR_INCORRECT_ANSWER,
 } from "/common/js/constants.js";
+import initTabs from "../../../common/js/initTabs.js";
+import changeTextElement from "../../../common/js/changeTextElement.js";
+import addQrCodeToElement from "../../../common/js/addQrCodeToElement.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
@@ -45,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextRoundBtn = gameResult.querySelector("#next-round-btn");
   const waitInfo = document.querySelector("#wait-info");
   const levelInfo = document.querySelector("#level-info");
+  const qrCodeTabContent = document.querySelector("#qr-code-room");
+  const urlRoom = `${currentLocation}/lobby/?room=${idRoom}`;
   let textOfHintTask;
   let timerInterval = 0;
   let seconds = 0;
@@ -52,13 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let hours = 0;
   let time;
 
-  linkRoomInput.value = `${currentLocation}/lobby/?room=${idRoom}`;
+  linkRoomInput.value = urlRoom;
 
   socket.emit("stayInRoom", dataPlayer);
+
+  initTabs();
+
+  socket.emit("createQrCode", urlRoom, idRoom);
 
   socket.on("getPlayerName", (namePlayer) => {
     document.title = `Игрок ${namePlayer}`;
     subtitlePage.textContent = `Игрок ${namePlayer}`;
+    addQrCodeToElement(qrCodeTabContent, idRoom);
   });
 
   function filterPlayersHostList(players) {
@@ -249,8 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   copyLinkBtn.addEventListener("click", () => {
     copyToClipboard(linkRoomInput.value);
-    showMessageAfterElement(MESSAGE_COPIED, copyLinkBtn);
-    removeElementAfterTimeout(document.querySelector("#info-message"), 1000);
+    changeTextElement(copyLinkBtn, MESSAGE_COPIED);
   });
 
   nextRoundBtn.addEventListener("click", () => {

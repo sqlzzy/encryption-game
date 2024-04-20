@@ -4,7 +4,7 @@ export default async function createQrCode(qrCode, url, idRoom, dirnameSrc) {
       `${dirnameSrc}/common/images/qrCodes/${idRoom}.png`,
       url,
       {
-        width: 100,
+        width: 120,
         margin: 0,
         color: {
           dark: "#40cd18",

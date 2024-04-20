@@ -3,8 +3,6 @@ export default function showMessageAfterElement(text, element) {
   spanMessage.textContent = text;
   spanMessage.style.color = "#40cd18";
   spanMessage.style.marginTop = "12px";
-  spanMessage.style.position = "absolute";
-  spanMessage.style.bottom = "0";
   spanMessage.setAttribute("id", "info-message");
 
   element.insertAdjacentElement("afterend", spanMessage);

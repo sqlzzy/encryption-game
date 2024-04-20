@@ -140,6 +140,50 @@ li {
     text-align: center;
 }
 
+.tabs-wrapper {
+    min-height: 230px;
+    height: 100%;
+}
+
+.tabs-wrapper__title {
+    margin: 0 0 6px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.tab {
+    border: none;
+}
+
+.tab_state_active {
+    position: relative;
+}
+
+.tab_state_active::after {
+    content: "";
+    width: 100%;
+    height: 1.5px;
+    background-color: #40cd18;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content#qr-code-room {
+    text-align: center;
+}
+
+.tab-content_state_show {
+    display: block;
+}
+
 @media (min-width: 600px) {
     body {
         max-width: 1111px;
@@ -163,5 +207,9 @@ li {
     .players {
         padding-top: 0;
         border-top: none;
+    }
+
+    .tabs-wrapper {
+        min-height: 260px;
     }
 }

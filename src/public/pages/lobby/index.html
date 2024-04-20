@@ -32,17 +32,28 @@
             required
           />
         </div>
-        <div class="link-room">
-          <label for="link-room-input">Ссылка на комнату:</label>
-          <input
-            class="input input_type_link-room"
-            type="text"
-            id="link-room-input"
-            disabled
-          />
-          <button class="button button_type_copy-link" id="copy-link-btn">
-            Скопировать
-          </button>
+        <div class="tabs-wrapper">
+          <p class="tabs-wrapper__title">Поделись ссылкой или qr-кодом комнаты:</p>
+          <div class="tabs">
+            <button data-tabname="link-room" class="tab tab_state_active">
+              ссылка
+            </button>
+            <button data-tabname="qr-code-room" class="tab">qr-код</button>
+          </div>
+          <div class="tabs-content">
+            <div id="link-room" class="tab-content tab-content_state_show">
+              <input
+                class="input input_type_link-room"
+                type="text"
+                id="link-room-input"
+                disabled
+              />
+              <button class="button button_type_copy-link" id="copy-link-btn">
+                Скопировать
+              </button>
+            </div>
+            <div id="qr-code-room" class="tab-content"></div>
+          </div>
         </div>
         <button class="button button_type_goto-room" id="goto-room-btn">
           Войти

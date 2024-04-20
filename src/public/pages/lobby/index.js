@@ -1,13 +1,15 @@
 import copyToClipboard from "/common/js/copyToClipboard.js";
 import showPlayerList from "/common/js/showPlayerList.js";
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
-import showMessageAfterElement from "/common/js/showMessageAfterElement.js";
 import removeElementAfterTimeout from "/common/js/removeElementAfterTimeout.js";
 import {
   ERROR_NAME_NOT_ENTERED,
   MESSAGE_COPIED,
 } from "/common/js/constants.js";
 import testValidName from "../../../common/js/testValidName.js";
+import initTabs from "../../../common/js/initTabs.js";
+import changeTextElement from "../../../common/js/changeTextElement.js";
+import addQrCodeToElement from "../../../common/js/addQrCodeToElement.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
@@ -19,8 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const idRoom = urlParams.get("room");
   const playersRoomList = document.querySelector("#players-room");
+  const qrCodeTabContent = document.querySelector("#qr-code-room");
+  const urlRoom = `${currentLocation}/lobby/?room=${idRoom}`;
 
-  linkRoomInput.value = `${currentLocation}/lobby/?room=${idRoom}`;
+  linkRoomInput.value = urlRoom;
+
+  initTabs();
+
+  socket.emit("createQrCode", urlRoom, idRoom);
+
+  setTimeout(() => {
+    addQrCodeToElement(qrCodeTabContent, idRoom);
+  }, 1000);
 
   setTimeout(function checkPlayersList() {
     socket.emit("checkPlayersList", idRoom);
@@ -33,8 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   copyLinkBtn.addEventListener("click", () => {
     copyToClipboard(linkRoomInput.value);
-    showMessageAfterElement(MESSAGE_COPIED, copyLinkBtn);
-    removeElementAfterTimeout(document.querySelector("#info-message"), 1000);
+    changeTextElement(copyLinkBtn, MESSAGE_COPIED);
   });
 
   gotoRoomBtn.addEventListener("click", () => {

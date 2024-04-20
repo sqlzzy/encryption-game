@@ -1,7 +1,7 @@
 import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
 import removeElementAfterTimeout from "/common/js/removeElementAfterTimeout.js";
 import testValidName from "/common/js/testValidName.js";
-import addMetatags from "../../../common/js/addMetatags.js";
+import addMetatags from "/common/js/addMetatags.js";
 import { ERROR_NAME_NOT_ENTERED } from "/common/js/constants.js";
 
 document.addEventListener("DOMContentLoaded", () => {

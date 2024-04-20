@@ -134,10 +134,19 @@ li {
     border-top: 1px dashed #40cd18;
     padding-top: 1rem;
     margin-top: 2rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .footer__text {
     text-align: center;
+    margin-bottom: 6px;
+}
+
+.footer__text:last-child {
+    margin-bottom: 0;
 }
 
 .tabs-wrapper {
@@ -150,6 +159,8 @@ li {
 }
 
 .tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin-bottom: 12px;
 }

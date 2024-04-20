@@ -7,7 +7,7 @@ export default async function createQrCode(qrCode, url, idRoom, dirnameSrc) {
         width: 120,
         margin: 0,
         color: {
-          dark: "#40cd18",
+          dark: "#40cd18cc",
           light: "#0000",
         },
       },

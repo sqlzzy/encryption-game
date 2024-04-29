@@ -97,7 +97,7 @@ function disconnectPlayer(socket, rooms, io, fs, dirnameSrc) {
           updatedRoomPlayers = updatePlayersData(roomPlayers, socketId);
           updatedRoundPlayers = updatePlayersData(roundPlayers, socketId);
 
-          if (updatedRoundPlayers.length < 2) {
+          if (updatedRoundPlayers.length !== 1) {
             startGame = room.round.startGame = 0;
 
             io.to(idRoom).emit("resetGame", {
@@ -108,15 +108,6 @@ function disconnectPlayer(socket, rooms, io, fs, dirnameSrc) {
         } else if (numberOfRoomPlayers === 2) {
           updatedRoomPlayers = updatePlayersData(roomPlayers, socketId);
           updatedRoundPlayers = updatePlayersData(roundPlayers, socketId);
-
-          if (updatedRoundPlayers.length < 2) {
-            startGame = room.round.startGame = 0;
-
-            io.to(idRoom).emit("resetGame", {
-              roomPlayers: updatedRoomPlayers,
-              startGame,
-            });
-          }
         } else if (numberOfRoomPlayers === 1) {
           updatedRoomPlayers = updatePlayersData(roomPlayers, socketId);
           updatedRoundPlayers = updatePlayersData(roundPlayers, socketId);

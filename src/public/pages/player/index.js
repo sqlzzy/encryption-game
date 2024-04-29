@@ -95,11 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentPlayerHost = filteredPlayersHostList[0];
       const currentOtherPlayer = filteredOtherPlayersList[0];
 
-      if (roomPlayers.length === 1 && currentPlayerHost && !startGame) {
-        waitInfo.textContent = MESSAGE_NEED_MORE_PLAYERS;
-        showElement(waitInfo);
-        hideElement(startGameBtn);
-      } else if (roomPlayers.length >= 2 && currentPlayerHost && !startGame) {
+      if (roomPlayers.length >= 1 && currentPlayerHost && !startGame) {
         hideElement(waitInfo);
         showElement(startGameBtn);
         socket.emit("createRoundPlayers", { idRoom, roomPlayers, startGame });
@@ -280,10 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hideElement(gameLevels);
     hideElement(gameBoard);
 
-    if (roomPlayers && roomPlayers.length === 1) {
-      hideElement(startGameBtn);
-    }
-
     socket.emit("createRoundPlayers", { idRoom, roomPlayers, startGame });
   }
 
@@ -294,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   socket.on("becomeHost", (roomPlayers) => {
-    if (roomPlayers && roomPlayers.length >= 2) {
+    if (roomPlayers && roomPlayers.length >= 1) {
       showElement(startGameBtn);
     } else {
       resetGame(roomPlayers);

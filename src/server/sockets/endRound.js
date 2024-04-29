@@ -5,7 +5,7 @@ function endRound(rooms, io, roomId) {
     const { roomPlayers } = room;
     const numberOfRoomPlayers = roomPlayers.length;
 
-    if (numberOfRoomPlayers > 1) {
+    if (numberOfRoomPlayers >= 1) {
       const indexCurrentHost = roomPlayers.findIndex(
         (player) => player.host === 1
       );
@@ -23,6 +23,18 @@ function endRound(rooms, io, roomId) {
         roundPlayers = room.round.roundPlayers = roomPlayers;
 
         io.to(nextHost.idPlayer).emit("becomeHost", roomPlayers);
+        io.to(nextHost.idRoom).emit("getRoomPlayersData", {
+          roomPlayers,
+          startGame,
+          roundPlayers,
+        });
+        io.to(nextHost.idRoom).emit("getRoundPlayersData", {
+          roomPlayers,
+          startGame,
+          roundPlayers,
+        });
+        io.to(roomId).emit("resetGame", { roomPlayers, startGame });
+      } else {
         io.to(nextHost.idRoom).emit("getRoomPlayersData", {
           roomPlayers,
           startGame,

@@ -23,9 +23,9 @@ export const LEVEL_EASY_RU = "Лёгкий";
 export const LEVEL_MEDIUM_RU = "Средний";
 export const LEVEL_HARD_RU = "Сложный";
 export const MESSAGE_WAIT_HOST_TO_SELECT_LEVEL =
-  "Ведущий выбирает уровень задачи";
-export const ERROR_INCORRECT_ANSWER = "Ответ неверный! Попробуйте еще";
-export const TEXT_HOST = "Ведущий";
+  "Хост выбирает уровень задачи";
+export const ERROR_INCORRECT_ANSWER = "Ответ неверный!";
+export const TEXT_HOST = "Хост";
 export const ALT_QRCODE_IMAGE = "Qr-код ссылки на комнату";
 
 export const CLASS_SHOW_ELEMENT = "show";

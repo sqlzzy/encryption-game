@@ -47,8 +47,10 @@
 }
 
 .button_type_copy-link {
-    width: 70%;
     margin: 0.5rem 0 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: normal;
 }
 
 .game {
@@ -155,7 +157,7 @@
     width: 100%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1024px) {
     .wrapper {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;

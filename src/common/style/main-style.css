@@ -156,7 +156,7 @@ li {
 }
 
 .tabs-wrapper {
-    min-height: 255px;
+    min-height: 280px;
     height: 100%;
 }
 
@@ -232,9 +232,5 @@ li {
     .players {
         padding-top: 0;
         border-top: none;
-    }
-
-    .tabs-wrapper {
-        min-height: 260px;
     }
 }

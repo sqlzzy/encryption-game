@@ -37,8 +37,7 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin: 0 0 1rem;
-    min-height: 110px;
+    margin: 0 0 2rem;
 }
 
 .link-room {

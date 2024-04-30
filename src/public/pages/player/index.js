@@ -2,22 +2,22 @@ import copyToClipboard from "/common/js/copyToClipboard.js";
 import showPlayerList from "/common/js/showPlayerList.js";
 import showElement from "/common/js/showElement.js";
 import hideElement from "/common/js/hideElement.js";
-import showErrorAfterElement from "/common/js/showErrorAfterElement.js";
 import defineLevel from "/common/js/defineLevel.js";
 import initTabs from "/common/js/initTabs.js";
 import changeTextElement from "/common/js/changeTextElement.js";
 import addQrCodeToElement from "/common/js/addQrCodeToElement.js";
+import showErrorInput from "/common/js/showErrorInput.js";
 import {
   MESSAGE_COPIED,
   MESSAGE_WAIT_HOST_TO_START_GAME,
   MESSAGE_WAIT_ROUND_TO_END,
-  MESSAGE_NEED_MORE_PLAYERS,
   MESSAGE_WAIT_HOST_TO_SELECT_LEVEL,
   ERROR_INCORRECT_ANSWER,
 } from "/common/js/constants.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
+  const gameAnswerContent = document.querySelector(".game__answer-content");
   const linkRoomInput = document.querySelector("#link-room-input");
   const copyLinkBtn = document.querySelector("#copy-link-btn");
   const startGameBtn = document.querySelector("#start-game-btn");
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameBoard = document.querySelector("#game-board");
   const sourceCode = gameBoard.querySelector("#source-code");
   const hintTaskElement = gameBoard.querySelector("#hint-task");
-  const answerTaskInput = gameBoard.querySelector("#answer-task-input");
+  const answerTaskInput = document.querySelector("#answer-task-input");
   const checkAnswerBtn = gameBoard.querySelector("#check-answer-btn");
   const playTime = gameBoard.querySelector("#playtime");
   const gameResult = document.querySelector("#game-result");
@@ -232,13 +232,11 @@ document.addEventListener("DOMContentLoaded", () => {
       hideElement(gameBoard);
       socket.emit("initWinnerOfRound", { answer, time, dataPlayer });
     } else {
-      showErrorAfterElement(ERROR_INCORRECT_ANSWER, checkAnswerBtn);
-
-      setTimeout(() => {
-        const errorMessage = document.querySelector("#error-message");
-        errorMessage.remove();
-        answerTaskInput.value = "";
-      }, 2000);
+      showErrorInput(
+        gameAnswerContent,
+        answerTaskInput,
+        ERROR_INCORRECT_ANSWER
+      );
     }
   });
 

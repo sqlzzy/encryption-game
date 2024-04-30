@@ -122,14 +122,9 @@
         -ms-flex-direction: column;
             flex-direction: column;
     position: relative;
-    min-height: 194px;
 }
 
 .game__answer-content {
-    margin-bottom: 1rem;
-}
-
-.button_type_check-answer {
     margin-bottom: 1rem;
 }
 
@@ -241,7 +236,6 @@
 
     .game__answer {
         width: 100%;
-        min-height: 170px;
     }
 
     .input_type_answer-task {

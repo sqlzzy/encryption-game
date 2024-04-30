@@ -48,7 +48,8 @@
 
 .button_type_copy-link {
     margin: 0.5rem 0 0;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     overflow: hidden;
     word-wrap: normal;
 }

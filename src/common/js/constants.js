@@ -25,9 +25,10 @@ export const LEVEL_HARD_RU = "Сложный";
 export const MESSAGE_WAIT_HOST_TO_SELECT_LEVEL =
   "Хост выбирает уровень задачи";
 export const ERROR_INCORRECT_ANSWER = "Ответ неверный!";
-export const TEXT_HOST = "Хост";
+export const TEXT_HOST = "Хост игры:";
 export const ALT_QRCODE_IMAGE = "Qr-код ссылки на комнату";
 
 export const CLASS_SHOW_ELEMENT = "show";
 export const CLASS_HIDE_ELEMENT = "hide";
 export const CLASS_PLAYER_ELEMENT = "player";
+export const CLASS_PLAYER_HOST = "host";

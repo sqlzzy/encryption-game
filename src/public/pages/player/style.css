@@ -152,6 +152,10 @@
     width: 100%;
 }
 
+.host {
+    margin-bottom: 1.25rem;
+}
+
 @media (min-width: 1024px) {
     .wrapper {
         -webkit-box-orient: vertical;

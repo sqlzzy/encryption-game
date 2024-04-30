@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const waitInfo = document.querySelector("#wait-info");
   const levelInfo = document.querySelector("#level-info");
   const qrCodeTabContent = document.querySelector("#qr-code-room");
+  const elHost = document.querySelector(".host");
   const urlRoom = `${currentLocation}/lobby/?room=${idRoom}`;
   let textOfHintTask;
   let timerInterval = 0;
@@ -264,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetGame(roomPlayers, startGame) {
     answerTaskInput.value = "";
     playTime.textContent = "00:00:00";
+    elHost.textContent = "";
     startGame = 0;
     timerInterval = 0;
     seconds = 0;

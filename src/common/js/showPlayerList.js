@@ -11,14 +11,14 @@ export default function showPlayerList(element, players) {
   element.innerHTML = "";
 
   players.forEach((player) => {
-    const hostPlayer = player.host === 1 ? "В" : "";
+    const hostPlayer = player.host === 1 ? "ВР" : "";
 
     if (player.host === 1) {
       nameHost = player.namePlayer;
     }
 
     const playerLi = document.createElement("li");
-    playerLi.innerText = `${player.namePlayer} ${hostPlayer}`;
+    playerLi.innerText = players.length >= 2 ? `${player.namePlayer} ${hostPlayer}` : player.namePlayer;
     playerLi.id = player.idPlayer;
     playerLi.classList.add(CLASS_PLAYER_ELEMENT);
     element.appendChild(playerLi);

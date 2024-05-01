@@ -22,11 +22,11 @@ export const LEVEL_HARD_ENG = "hard";
 export const LEVEL_EASY_RU = "Лёгкий";
 export const LEVEL_MEDIUM_RU = "Средний";
 export const LEVEL_HARD_RU = "Сложный";
-export const MESSAGE_WAIT_HOST_TO_SELECT_LEVEL =
-  "Хост выбирает уровень задачи";
+export const MESSAGE_WAIT_HOST_TO_SELECT_LEVEL = "Хост выбирает уровень задачи";
 export const ERROR_INCORRECT_ANSWER = "Ответ неверный!";
 export const TEXT_HOST = "Ведущий раунда:";
 export const ALT_QRCODE_IMAGE = "Qr-код ссылки на комнату";
+export const ERROR_EMPTY_ANSWER = "Ответ не введён!";
 
 export const CLASS_SHOW_ELEMENT = "show";
 export const CLASS_HIDE_ELEMENT = "hide";

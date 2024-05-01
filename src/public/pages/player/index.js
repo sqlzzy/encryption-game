@@ -13,6 +13,7 @@ import {
   MESSAGE_WAIT_ROUND_TO_END,
   MESSAGE_WAIT_HOST_TO_SELECT_LEVEL,
   ERROR_INCORRECT_ANSWER,
+  ERROR_EMPTY_ANSWER,
 } from "/common/js/constants.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -217,13 +218,17 @@ document.addEventListener("DOMContentLoaded", () => {
   checkAnswerBtn.addEventListener("click", () => {
     const answer = +answerTaskInput.value;
 
-    socket.emit("checkAnswer", {
-      textOfHintTask,
-      answer,
-      time,
-      currentLocation,
-      idRoom,
-    });
+    if (answer) {
+      socket.emit("checkAnswer", {
+        textOfHintTask,
+        answer,
+        time,
+        currentLocation,
+        idRoom,
+      });
+    } else {
+      showErrorInput(gameAnswerContent, answerTaskInput, ERROR_EMPTY_ANSWER);
+    }
   });
 
   socket.on("getResultAfterCheckAnswer", (data) => {
